@@ -7,4 +7,4 @@ require (
 	gitlab.com/mjwhitta/hilighter v1.9.3
 )
 
-require gitlab.com/mjwhitta/log v1.4.5
+require gitlab.com/mjwhitta/log v1.4.6
