@@ -11,23 +11,22 @@ import (
 
 // Exit status
 const (
-	Good             int = 0
-	InvalidOption    int = 1
-	InvalidArgument  int = 2
-	MissingArguments int = 3
-	ExtraArguments   int = 4
-	Exception        int = 5
+	Good = iota
+	InvalidOption
+	MissingOption
+	InvalidArgument
+	MissingArgument
+	ExtraArgument
+	Exception
 )
 
 // Flags
-type cliFlags struct {
+var flags struct {
 	nocolor bool
 	verbose bool
 	version bool
 	years   bool
 }
-
-var flags cliFlags
 
 func init() {
 	// Configure cli package
@@ -39,11 +38,12 @@ func init() {
 		[]string{
 			"Normally the exit status is 0. In the event of an error",
 			"the exit status will be one of the below:\n\n",
-			"1: Invalid option\n",
-			"2: Invalid argument\n",
-			"3: Missing arguments\n",
-			"4: Extra arguments\n",
-			"5: Exception",
+			hl.Sprintf("%d: Invalid option\n", InvalidOption),
+			hl.Sprintf("%d: Missing option\n", MissingOption),
+			hl.Sprintf("%d: Invalid argument\n", InvalidArgument),
+			hl.Sprintf("%d: Missing argument\n", MissingArgument),
+			hl.Sprintf("%d: Extra argument\n", ExtraArgument),
+			hl.Sprintf("%d: Exception", Exception),
 		},
 		" ",
 	)
@@ -70,7 +70,7 @@ func init() {
 		"v",
 		"verbose",
 		false,
-		"Show show stacktrace if error.",
+		"Show stacktrace, if error.",
 	)
 	cli.Flag(&flags.version, "V", "version", false, "Show version.")
 	cli.Flag(
@@ -95,9 +95,9 @@ func validate() {
 
 	// Validate cli flags
 	if cli.NArg() < 2 {
-		cli.Usage(MissingArguments)
+		cli.Usage(MissingArgument)
 	} else if cli.NArg() > 2 {
-		cli.Usage(ExtraArguments)
+		cli.Usage(ExtraArgument)
 	}
 
 	// Validate arguments match time format regex

@@ -3,9 +3,11 @@ package tdiff
 import (
 	"strings"
 	"time"
+
+	"gitlab.com/mjwhitta/errors"
 )
 
-func getTime(ts string) (time.Time, error) {
+func getTime(ts string) (t time.Time, e error) {
 	switch ts {
 	case "now":
 		return time.Now(), nil
@@ -15,5 +17,9 @@ func getTime(ts string) (time.Time, error) {
 		ts += "T00:00:00"
 	}
 
-	return time.Parse(time.RFC3339, ts+"Z")
+	if t, e = time.Parse(time.RFC3339, ts+"Z"); e != nil {
+		e = errors.Newf("failed to parse timestamp %s: %w", ts, e)
+	}
+
+	return
 }

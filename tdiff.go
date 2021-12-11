@@ -32,7 +32,7 @@ func New(ts1 string, ts2 string) (*TDiff, error) {
 		td.diff = t1.Sub(t2)
 	}
 
-	return td, e
+	return td, nil
 }
 
 // Days will return a string showing the full time duration in days.

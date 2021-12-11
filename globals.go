@@ -14,4 +14,4 @@ var RFC3339 *regexp.Regexp = regexp.MustCompile(
 )
 
 // Version is the package version
-const Version = "1.1.1"
+const Version = "1.2.0"
