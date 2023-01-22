@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gitlab.com/mjwhitta/cli"
-	"gitlab.com/mjwhitta/log"
-	"gitlab.com/mjwhitta/tdiff"
+	"github.com/mjwhitta/cli"
+	"github.com/mjwhitta/log"
+	"github.com/mjwhitta/tdiff"
 )
 
 func main() {

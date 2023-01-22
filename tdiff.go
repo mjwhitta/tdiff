@@ -3,7 +3,7 @@ package tdiff
 import (
 	"time"
 
-	hl "gitlab.com/mjwhitta/hilighter"
+	hl "github.com/mjwhitta/hilighter"
 )
 
 // TDiff is a struct to hold the different between two dates for
