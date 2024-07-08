@@ -16,21 +16,9 @@ merely sample code.
 Open a terminal and run the following:
 
 ```
-$ go get --ldflags "-s -w" --trimpath -u github.com/mjwhitta/tdiff
-$ go install --ldflags "-s -w" --trimpath \
-    github.com/mjwhitta/tdiff/cmd/tdiff@latest
+$ go get -u github.com/mjwhitta/tdiff
+$ go install github.com/mjwhitta/tdiff/cmd/tdiff@latest
 ```
-
-Or install from source:
-
-```
-$ git clone https://github.com/mjwhitta/tdiff.git
-$ cd tdiff
-$ git submodule update --init
-$ make install
-```
-
-**Note:** `make install` will install to `$HOME/.local/bin`.
 
 ## Usage
 
