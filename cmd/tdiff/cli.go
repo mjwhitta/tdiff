@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"strings"
 
 	"github.com/mjwhitta/cli"
 	hl "github.com/mjwhitta/hilighter"
@@ -34,26 +33,20 @@ func init() {
 	cli.Authors = []string{"Miles Whittaker <mj@whitta.dev>"}
 	cli.Banner = hl.Sprintf("%s [OPTIONS] <date> <date>", os.Args[0])
 	cli.BugEmail = "tdiff.bugs@whitta.dev"
-	cli.ExitStatus = strings.Join(
-		[]string{
-			"Normally the exit status is 0. In the event of an error",
-			"the exit status will be one of the below:\n\n",
-			hl.Sprintf("%d: Invalid option\n", InvalidOption),
-			hl.Sprintf("%d: Missing option\n", MissingOption),
-			hl.Sprintf("%d: Invalid argument\n", InvalidArgument),
-			hl.Sprintf("%d: Missing argument\n", MissingArgument),
-			hl.Sprintf("%d: Extra argument\n", ExtraArgument),
-			hl.Sprintf("%d: Exception", Exception),
-		},
-		" ",
+	cli.ExitStatus(
+		"Normally the exit status is 0. In the event of an error the",
+		"exit status will be one of the below:\n\n",
+		hl.Sprintf("%d: Invalid option\n", InvalidOption),
+		hl.Sprintf("%d: Missing option\n", MissingOption),
+		hl.Sprintf("%d: Invalid argument\n", InvalidArgument),
+		hl.Sprintf("%d: Missing argument\n", MissingArgument),
+		hl.Sprintf("%d: Extra argument\n", ExtraArgument),
+		hl.Sprintf("%d: Exception", Exception),
 	)
-	cli.Info = strings.Join(
-		[]string{
-			"Calculate the approximate difference in time between",
-			"two dates. Dates should be formatted in RFC3339",
-			"(YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS).",
-		},
-		" ",
+	cli.Info(
+		"Calculate the approximate difference in time between two",
+		"dates. Dates should be formatted in RFC3339 (YYYY-MM-DD or",
+		"YYYY-MM-DDTHH:MM:SS).",
 	)
 	cli.SeeAlso = []string{"date"}
 	cli.Title = "TDiff"

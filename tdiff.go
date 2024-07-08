@@ -89,7 +89,7 @@ func (t *TDiff) Years() string {
 // YearsShorthand will return a string showing if < 1 year or > 1
 // year.
 func (t *TDiff) YearsShorthand() string {
-	var out = "Less than one year"
+	var out string = "Less than one year"
 
 	if t.diff > time.Duration(time.Hour)*24*365 {
 		out = "One or more years"
